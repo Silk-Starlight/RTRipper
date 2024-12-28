@@ -70,70 +70,68 @@ const TripGrid = ({
   );
 
   return (
-    <div className="w-full min-h-screen bg-gray-50 p-6">
-      <div className="max-w-7xl mx-auto">
-        <div className="flex justify-between items-center mb-6">
-          <h1 className="text-3xl font-bold">My Trips</h1>
-          <Button onClick={onAddTrip} size="lg">
-            <Plus className="mr-2 h-5 w-5" />
-            Add New Trip
-          </Button>
-        </div>
-
-        <Tabs defaultValue="upcoming" className="w-full">
-          <TabsList className="mb-6">
-            <TabsTrigger
-              value="upcoming"
-              onClick={() => setActiveTab("upcoming")}
-            >
-              Upcoming Trips
-            </TabsTrigger>
-            <TabsTrigger value="past" onClick={() => setActiveTab("past")}>
-              Past Trips
-            </TabsTrigger>
-          </TabsList>
-
-          <TabsContent value="upcoming" className="mt-0">
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-              {filteredTrips.map((trip) => (
-                <TripCard
-                  key={trip.id}
-                  coverPhoto={trip.coverPhoto}
-                  destination={trip.destination}
-                  startDate={trip.startDate}
-                  endDate={trip.endDate}
-                  totalMiles={trip.totalMiles}
-                  stops={trip.stops}
-                  isPast={trip.isPast}
-                  onEdit={() => onEditTrip(trip.id)}
-                  onDelete={() => onDeleteTrip(trip.id)}
-                  onShare={() => onShareTrip(trip.id)}
-                />
-              ))}
-            </div>
-          </TabsContent>
-
-          <TabsContent value="past" className="mt-0">
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-              {filteredTrips.map((trip) => (
-                <TripCard
-                  key={trip.id}
-                  coverPhoto={trip.coverPhoto}
-                  destination={trip.destination}
-                  startDate={trip.startDate}
-                  endDate={trip.endDate}
-                  totalMiles={trip.totalMiles}
-                  stops={trip.stops}
-                  isPast={trip.isPast}
-                  onEdit={() => onEditTrip(trip.id)}
-                  onDelete={() => onDeleteTrip(trip.id)}
-                  onShare={() => onShareTrip(trip.id)}
-                />
-              ))}
-            </div>
-          </TabsContent>
-        </Tabs>
+    <div className="max-w-7xl mx-auto">
+      <div className="flex justify-between items-center mb-6">
+        <h1 className="text-3xl font-bold">My Trips</h1>
+        <Button onClick={onAddTrip} size="lg">
+          <Plus className="mr-2 h-5 w-5" />
+          Add New Trip
+        </Button>
       </div>
+
+      <Tabs defaultValue="upcoming" className="w-full">
+        <TabsList className="mb-6">
+          <TabsTrigger
+            value="upcoming"
+            onClick={() => setActiveTab("upcoming")}
+          >
+            Upcoming Trips
+          </TabsTrigger>
+          <TabsTrigger value="past" onClick={() => setActiveTab("past")}>
+            Past Trips
+          </TabsTrigger>
+        </TabsList>
+
+        <TabsContent value="upcoming" className="mt-0">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
+            {filteredTrips.map((trip) => (
+              <TripCard
+                key={trip.id}
+                coverPhoto={trip.coverPhoto}
+                destination={trip.destination}
+                startDate={trip.startDate}
+                endDate={trip.endDate}
+                totalMiles={trip.totalMiles}
+                stops={trip.stops}
+                isPast={trip.isPast}
+                onEdit={() => onEditTrip(trip.id)}
+                onDelete={() => onDeleteTrip(trip.id)}
+                onShare={() => onShareTrip(trip.id)}
+              />
+            ))}
+          </div>
+        </TabsContent>
+
+        <TabsContent value="past" className="mt-0">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
+            {filteredTrips.map((trip) => (
+              <TripCard
+                key={trip.id}
+                coverPhoto={trip.coverPhoto}
+                destination={trip.destination}
+                startDate={trip.startDate}
+                endDate={trip.endDate}
+                totalMiles={trip.totalMiles}
+                stops={trip.stops}
+                isPast={trip.isPast}
+                onEdit={() => onEditTrip(trip.id)}
+                onDelete={() => onDeleteTrip(trip.id)}
+                onShare={() => onShareTrip(trip.id)}
+              />
+            ))}
+          </div>
+        </TabsContent>
+      </Tabs>
     </div>
   );
 };
